@@ -1,0 +1,46 @@
+# Isolated first installation; existing compose.yaml and bind-mounted data stay intact.
+name: icsee-starter
+services:
+  web:
+    build: .
+    image: icsee-local:starter
+    init: true
+    environment:
+      ICSEE_PASSWORD: ${ICSEE_PASSWORD:-}
+      ICSEE_PROJECT_DIR: /app
+      ICSEE_CONFIG_DIR: /app/config
+      ICSEE_DATA_DIR: /app/data
+      ICSEE_RUNTIME_DIR: /app/data/runtime
+      ICSEE_DAILY_CLOCK_SYNC: "0"
+      ICSEE_PORT: ${ICSEE_PORT:-8000}
+      TZ: Asia/Seoul
+    command: ["serve", "--container", "--port", "${ICSEE_PORT:-8000}"]
+    ports:
+      - "127.0.0.1:${ICSEE_PORT:-8000}:${ICSEE_PORT:-8000}"
+    volumes:
+      - starter-config:/app/config
+      - starter-data:/app/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 60s
+    restart: unless-stopped
+    cpus: "2.0"
+    mem_limit: 1g
+    pids_limit: 128
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.environ['ICSEE_PORT'] + '/healthz', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+volumes:
+  starter-config:
+  starter-data:

@@ -1,0 +1,63 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+
+# Local credentials and environment files (publish only sanitized examples).
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs and local databases, including SQLite journals and sidecars.
+*.log
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+
+# Live-camera diagnostics and evidence may contain device/session details or video.
+research/**/*.json
+research/motor-evidence/
+research/tracking_web_check.cjs
+research/tracking_overview_check.cjs
+/docs/ui-screenshots/
+/docs/*-validation-*.json
+
+# Deployment settings, authentication backups, recordings, and device profiles.
+config/
+data/
+camera-profile.json
+camera-profile*.json
+/compose.yaml
+/compose.local.yaml
+/compose.override.yaml
+/compose.override.yml
+/docker-compose.override.yaml
+/docker-compose.override.yml
+starter/
+
+# Local attachments, editor state, and build output.
+.DS_Store
+.codex-attachments/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+build/
+dist/

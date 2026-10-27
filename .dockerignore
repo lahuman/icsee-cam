@@ -1,0 +1,8 @@
+*
+!Dockerfile
+!requirements-lock.txt
+!pyproject.toml
+!icsee_ptz/
+!icsee_ptz/**
+**/__pycache__
+**/*.pyc

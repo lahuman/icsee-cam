@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>로그인 · iCSee 카메라</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#0B1120;color:#F8FAFC}*{box-sizing:border-box}body{margin:0;padding:24px;min-height:100dvh;display:grid;place-items:center}main{width:100%;max-width:400px;padding:30px;border:1px solid #334155;border-radius:12px;background:#111827}small{color:#94A3B8;letter-spacing:2px}h1{font-size:25px;margin:12px 0 28px}label{display:block;margin:18px 0 8px}input,button{width:100%;font:inherit;padding:13px;border-radius:8px;border:1px solid #334155}input{background:#0B1120;color:#F8FAFC}button{margin-top:24px;background:#3B82F6;color:#FFFFFF;font-weight:600;cursor:pointer}p{font-size:13px;line-height:1.6;color:#94A3B8}#error{color:#FCA5A5;min-height:22px}
+button:disabled{opacity:.6;cursor:wait}button:hover:enabled{background:#2563eb}input:focus-visible,button:focus-visible{outline:2px solid #60a5fa;outline-offset:3px}</style>
+<main><small>LOCAL CAMERA</small><h1>카메라 로그인</h1>
+<form id="login"><label for="username">ID</label><input id="username" name="username" autocomplete="username" maxlength="64" required autofocus>
+<label for="password">비밀번호</label><input id="password" name="password" type="password" autocomplete="current-password" maxlength="128" required>
+<button type="submit">로그인</button><p id="error" role="alert"></p></form>
+<p>로그인은 8시간 동안 유지됩니다.</p><p id="http-note" hidden>현재 HTTP 접속입니다. 로그인 정보의 전송 암호화와 휴대폰 말하기에는 HTTPS가 필요합니다.</p></main>
+<script src="/login.js"></script></html>
